@@ -18,12 +18,20 @@ Task.all [
   sizefp '../.gitignore'
   sizefp '../package.json'
 ]
-.map (data) ->
-  dd data
-  data
 .fork(
   (err) -> throw new Error err
   (data) ->
-    # dd { data }
+    dd all: data
+    return
+)
+
+Task.seq [
+  sizefp '../.gitignore'
+  sizefp '../package.json'
+]
+.fork(
+  (err) -> throw new Error err
+  (data) ->
+    dd seq: data
     return
 )
